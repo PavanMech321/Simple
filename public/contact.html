@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact-Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #1a1818;
+            justify-self: center;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            max-width: 412px;
+        }
+        nav {
+            margin-bottom: 20px;
+            /* background-color: #f4f4f4; */
+        }
+        nav a {
+            width: 100%;
+            font-size: larger;
+            border-radius: 5px;
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+             background-color: aqua;
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            max-width: 412px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        p {
+            color: #666;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input{
+            width: 70%;
+            height: 40px;
+            background-color: #555;
+            border-radius: 10px;
+            color: white;
+        }
+        textarea {
+            width: 70%;
+            height: 100px;
+            background-color: #555;
+            border-radius: 10px;
+            color: white;
+        }
+        input:hover, textarea:hover {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    <div style="margin: auto; padding: 20px; background-color: #f4f4f4; border-radius: 8px;">
+        <h2>Contact Us</h2>
+        <!-- <form action="https://api.web3forms.com/submit" method="post"> -->
+        <form action="/contact-form" method="post">
+            <label for="name">Name:</label><br>
+            <input type="hidden" name="access_key" value="500128f8-c38f-4751-89ae-3050797f2016">
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+            
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required style="width: 100%; padding: 8px;"></textarea><br>
+            
+            <button type="submit" style="padding: 10px 15px; background-color: #333; color: white; border: none; border-radius: 5px;">Submit</button>
+        </form>
+        <p style="margin-top: 20px; color: #666;">We will get back to you as soon as possible.</p>
+    </div>
+</body>
+</html>
