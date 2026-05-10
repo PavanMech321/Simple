@@ -36,7 +36,7 @@ const transporter = nodemailer.createTransport({
     // },
     auth: {
       user: 'professionalpavan444@gmail.com', // Add your email address here
-      pass: 'pixpgfnoyjqtdqmj', // Add email password or app-specific password
+      pass: 'raxmgkwągftuggiz', // Add email password or app-specific password
     },
     debug : true, // Enable debug output
     logger : true // Enable logging
