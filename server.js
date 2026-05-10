@@ -53,17 +53,29 @@ app.post("/contact-form", (req, res) => {
     return res.status(400).send("All fields are required");
   }
 
+  // XSS Prevention: Escape HTML characters
+  const escapeHtml = (text) => {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+  };
+
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: process.env.EMAIL_USER, // Send to YOUR email
     replyTo: email, // User can reply to this email
-    subject: `Contact Form Submission from ${name}`,
+    subject: `Contact Form Submission from ${escapeHtml(name)}`,
     html: `
       <h3>New Contact Form Submission</h3>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
       <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br>')}</p>
+      <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
     `,
   };
 
@@ -82,7 +94,7 @@ app.get("/services", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "services.html"));
 });
 
-app.post("/Service-form", (req, res) => {
+app.post("/service-form", (req, res) => {
   const { service, email, details } = req.body;
 
   // Input validation
@@ -90,17 +102,29 @@ app.post("/Service-form", (req, res) => {
     return res.status(400).send("All fields are required");
   }
 
+  // XSS Prevention: Escape HTML characters
+  const escapeHtml = (text) => {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+  };
+
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: process.env.EMAIL_USER, // Send to YOUR email
     replyTo: email, // User can reply to this email
-    subject: `Service Form Submission - ${service}`,
+    subject: `Service Form Submission - ${escapeHtml(service)}`,
     html: `
       <h3>New Service Request</h3>
-      <p><strong>Service:</strong> ${service}</p>
-      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Service:</strong> ${escapeHtml(service)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
       <p><strong>Details:</strong></p>
-      <p>${details.replace(/\n/g, '<br>')}</p>
+      <p>${escapeHtml(details).replace(/\n/g, '<br>')}</p>
     `,
   };
 
